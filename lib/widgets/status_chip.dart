@@ -37,15 +37,15 @@ class StatusChip extends StatelessWidget {
   (Color, Color) _getColors(BuildContext context) {
     return switch (type) {
       StatusChipType.success => (
-          context.appColors.success.withOpacity(0.1),
+          context.appColors.success.withValues(alpha: 0.1),
           context.appColors.success,
         ),
       StatusChipType.warning => (
-          context.appColors.warning.withOpacity(0.15),
+          context.appColors.warning.withValues(alpha: 0.15),
           context.appColors.warning,
         ),
       StatusChipType.danger => (
-          context.appColors.error.withOpacity(0.1),
+          context.appColors.error.withValues(alpha: 0.1),
           context.appColors.error,
         ),
       StatusChipType.neutral => (

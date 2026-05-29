@@ -54,7 +54,6 @@ class StokWarungApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isAuthenticated = context.watch<AuthProvider>().isAuthenticated;
     final themeProvider = context.watch<ThemeProvider>();
 
     return MaterialApp(
@@ -63,7 +62,7 @@ class StokWarungApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: themeProvider.themeMode,
-      initialRoute: isAuthenticated ? AppRoutes.main : AppRoutes.login,
+      initialRoute: AppRoutes.splash,
       onGenerateRoute: AppRoutes.generateRoute,
     );
   }

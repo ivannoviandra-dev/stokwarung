@@ -62,7 +62,7 @@ class SummaryCard extends StatelessWidget {
                   Text(
                     subtitle!,
                     style: textTheme.bodySmall?.copyWith(
-                      color: textColor?.withOpacity(0.8) ?? context.appColors.textSecondary,
+                      color: textColor?.withValues(alpha: 0.8) ?? context.appColors.textSecondary,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -74,8 +74,8 @@ class SummaryCard extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: textColor != null
-                  ? Colors.white.withOpacity(0.2)
-                  : baseColor.withOpacity(0.1),
+                  ? Colors.white.withValues(alpha: 0.2)
+                  : baseColor.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(

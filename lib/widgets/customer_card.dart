@@ -29,8 +29,8 @@ class CustomerCard extends StatelessWidget {
           CircleAvatar(
             radius: 22,
             backgroundColor: customer.totalDebt > 0
-                ? context.appColors.error.withOpacity(0.1)
-                : context.appColors.success.withOpacity(0.1),
+                ? context.appColors.error.withValues(alpha: 0.1)
+                : context.appColors.success.withValues(alpha: 0.1),
             child: Text(
               customer.name.substring(0, 1).toUpperCase(),
               style: textTheme.titleMedium?.copyWith(

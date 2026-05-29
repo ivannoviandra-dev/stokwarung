@@ -101,6 +101,7 @@ class _MainScreenState extends State<MainScreen> {
     SnackbarHelper.showInfo(context, 'Membuka kamera pemindai barcode...');
     final navigator = Navigator.of(context);
     final scaffoldMessenger = ScaffoldMessenger.of(context);
+    final appColors = context.appColors;
 
     // Simulated scan - after delay, mock a scan result
     Future.delayed(const Duration(seconds: 2), () {
@@ -115,7 +116,7 @@ class _MainScreenState extends State<MainScreen> {
                 Expanded(child: Text('Barcode terdeteksi: Indomie Goreng (8886008101053)')),
               ],
             ),
-            backgroundColor: context.appColors.success,
+            backgroundColor: appColors.success,
             behavior: SnackBarBehavior.floating,
           ),
         );

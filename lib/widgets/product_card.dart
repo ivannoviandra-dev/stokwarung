@@ -41,7 +41,7 @@ class ProductCard extends StatelessWidget {
                     child: Image.network(
                       product.imageUrl!,
                       fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) => _buildPlaceholderIcon(context),
+                      errorBuilder: (context, error, stackTrace) => _buildPlaceholderIcon(context),
                     ),
                   )
                 : _buildPlaceholderIcon(context),
@@ -108,7 +108,7 @@ class ProductCard extends StatelessWidget {
               icon: Icon(Icons.add_shopping_cart, color: context.appColors.primary),
               onPressed: onAddToCart,
               style: IconButton.styleFrom(
-                backgroundColor: context.appColors.primary.withOpacity(0.1),
+                backgroundColor: context.appColors.primary.withValues(alpha: 0.1),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
