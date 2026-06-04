@@ -47,7 +47,11 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     
     if (!mounted) return;
 
-    final isAuthenticated = context.read<AuthProvider>().isAuthenticated;
+    final authProvider = context.read<AuthProvider>();
+    await authProvider.restoreSession();
+    if (!mounted) return;
+
+    final isAuthenticated = authProvider.isAuthenticated;
     
     Navigator.of(context).pushReplacementNamed(
       isAuthenticated ? AppRoutes.main : AppRoutes.login,

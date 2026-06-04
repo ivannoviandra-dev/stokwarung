@@ -27,8 +27,12 @@ class _StoreSettingsScreenState extends State<StoreSettingsScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final store = context.read<StoreProvider>().store;
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final provider = context.read<StoreProvider>();
+      await provider.loadStore();
+      if (!mounted) return;
+
+      final store = provider.store;
       _nameController.text = store.name;
       _phoneController.text = store.phone;
       _addressController.text = store.address;
@@ -54,8 +58,12 @@ class _StoreSettingsScreenState extends State<StoreSettingsScreen> {
 
     await provider.updateStore(updated);
     if (mounted) {
-      SnackbarHelper.showSuccess(context, 'Identitas toko berhasil disimpan!');
-      Navigator.pop(context);
+      if (provider.errorMessage == null) {
+        SnackbarHelper.showSuccess(context, 'Identitas toko berhasil disimpan!');
+        Navigator.pop(context);
+      } else {
+        SnackbarHelper.showError(context, provider.errorMessage!);
+      }
     }
   }
 
@@ -168,8 +176,9 @@ class _StoreSettingsScreenState extends State<StoreSettingsScreen> {
                           ),
                           Switch(
                             value: store.isOpen,
-                            onChanged: (val) {
-                              storeProvider.toggleOpenStatus();
+                            onChanged: (val) async {
+                              await storeProvider.toggleOpenStatus();
+                              if (!context.mounted) return;
                               SnackbarHelper.showInfo(
                                 context,
                                 val ? 'Status warung diatur BUKA' : 'Status warung diatur TUTUP',

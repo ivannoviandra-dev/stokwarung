@@ -12,7 +12,7 @@ class Validators {
     if (value == null || value.trim().isEmpty) {
       return 'Email tidak boleh kosong';
     }
-    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    final emailRegex = RegExp(r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
     if (!emailRegex.hasMatch(value.trim())) {
       return 'Format email tidak valid';
     }

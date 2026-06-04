@@ -18,6 +18,7 @@ class AppTextField extends StatelessWidget {
   final VoidCallback? onTap;
   final bool autofocus;
   final String? initialValue;
+  final TextInputAction? textInputAction;
 
   const AppTextField({
     super.key,
@@ -35,6 +36,7 @@ class AppTextField extends StatelessWidget {
     this.onTap,
     this.autofocus = false,
     this.initialValue,
+    this.textInputAction,
   });
 
   @override
@@ -45,6 +47,7 @@ class AppTextField extends StatelessWidget {
       obscureText: obscureText,
       validator: validator,
       onChanged: onChanged,
+      textInputAction: textInputAction,
       maxLines: maxLines,
       readOnly: readOnly,
       onTap: onTap,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../screens/auth/login_screen.dart';
+import '../../screens/auth/register_store_screen.dart';
 import '../../screens/main/main_screen.dart';
 import '../../screens/splash/splash_screen.dart';
 import '../../screens/products/product_detail_screen.dart';
@@ -21,6 +22,7 @@ class AppRoutes {
   // ─── Route Names ───
   static const String splash = '/splash';
   static const String login = '/login';
+  static const String registerStore = '/register-store';
   static const String main = '/main';
   static const String productDetail = '/product-detail';
   static const String checkout = '/checkout';
@@ -40,6 +42,9 @@ class AppRoutes {
 
       case login:
         return _buildRoute(const LoginScreen(), settings);
+
+      case registerStore:
+        return _buildRoute(const RegisterStoreScreen(), settings);
 
       case main:
         return _buildRoute(const MainScreen(), settings);

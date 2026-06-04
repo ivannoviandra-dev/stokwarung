@@ -43,9 +43,7 @@ class ProductProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
-    await Future.delayed(const Duration(milliseconds: 500));
-
-    _products = Product.sampleProducts();
+    _products = [];
     _applyFilters();
     _isLoading = false;
     notifyListeners();
@@ -87,8 +85,6 @@ class ProductProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
-    await Future.delayed(const Duration(milliseconds: 300));
-
     _products.add(product);
     _applyFilters();
     _isLoading = false;
@@ -99,8 +95,6 @@ class ProductProvider extends ChangeNotifier {
   Future<void> updateProduct(Product product) async {
     _isLoading = true;
     notifyListeners();
-
-    await Future.delayed(const Duration(milliseconds: 300));
 
     final index = _products.indexWhere((p) => p.id == product.id);
     if (index != -1) {

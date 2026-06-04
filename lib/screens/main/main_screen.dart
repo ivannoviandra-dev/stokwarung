@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/theme/app_colors.dart';
-import '../../core/routes/app_routes.dart';
 import '../../providers/navigation_provider.dart';
 import '../../providers/transaction_provider.dart';
 import '../dashboard/dashboard_screen.dart';
@@ -98,34 +97,9 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   void _simulateBarcodeScan(BuildContext context) {
-    SnackbarHelper.showInfo(context, 'Membuka kamera pemindai barcode...');
-    final navigator = Navigator.of(context);
-    final scaffoldMessenger = ScaffoldMessenger.of(context);
-    final appColors = context.appColors;
-
-    // Simulated scan - after delay, mock a scan result
-    Future.delayed(const Duration(seconds: 2), () {
-      if (mounted) {
-        scaffoldMessenger.clearSnackBars();
-        scaffoldMessenger.showSnackBar(
-          SnackBar(
-            content: const Row(
-              children: [
-                Icon(Icons.check_circle_outline, color: Colors.white),
-                SizedBox(width: 12),
-                Expanded(child: Text('Barcode terdeteksi: Indomie Goreng (8886008101053)')),
-              ],
-            ),
-            backgroundColor: appColors.success,
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
-        // Automatically open product detail / add stock or go to edit screen
-        navigator.pushNamed(
-          AppRoutes.productDetail,
-          arguments: '1', // Indomie Goreng mock ID
-        );
-      }
-    });
+    SnackbarHelper.showInfo(
+      context,
+      'Scanner barcode akan aktif setelah data produk tersambung ke Supabase.',
+    );
   }
 }

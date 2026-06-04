@@ -50,9 +50,7 @@ class TransactionProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
-    await Future.delayed(const Duration(milliseconds: 500));
-
-    _transactions = Transaction.sampleTransactions();
+    _transactions = [];
     _isLoading = false;
     notifyListeners();
   }

@@ -31,10 +31,8 @@ class CustomerProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
-    await Future.delayed(const Duration(milliseconds: 500));
-
-    _customers = Customer.sampleCustomers();
-    _debts = Debt.sampleDebts();
+    _customers = [];
+    _debts = [];
     _applySearch();
     _isLoading = false;
     notifyListeners();

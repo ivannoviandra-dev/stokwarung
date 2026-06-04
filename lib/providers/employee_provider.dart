@@ -16,9 +16,7 @@ class EmployeeProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
-    await Future.delayed(const Duration(milliseconds: 500));
-
-    _employees = Employee.sampleEmployees();
+    _employees = [];
     _isLoading = false;
     notifyListeners();
   }

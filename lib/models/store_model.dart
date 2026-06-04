@@ -40,9 +40,9 @@ class Store {
 
   factory Store.fromJson(Map<String, dynamic> json) {
     return Store(
-      name: json['name'] as String,
-      phone: json['phone'] as String,
-      address: json['address'] as String,
+      name: json['name'] as String? ?? 'Toko Saya',
+      phone: json['phone'] as String? ?? '',
+      address: json['address'] as String? ?? '',
       logoUrl: json['logo_url'] as String?,
       openTime: json['open_time'] as String? ?? '07:00',
       closeTime: json['close_time'] as String? ?? '22:00',
@@ -60,6 +60,14 @@ class Store {
       'close_time': closeTime,
       'is_open': isOpen,
     };
+  }
+
+  static Store empty() {
+    return Store(
+      name: 'Toko Saya',
+      phone: '',
+      address: '',
+    );
   }
 
   static Store sampleStore() {

@@ -45,11 +45,11 @@ class ProfileScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        user?.name ?? 'Andi Pratama',
+                        user?.name ?? 'Pemilik Toko',
                         style: textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(width: 8),
-                      if (user?.isPro ?? true)
+                      if (user?.isPro ?? false)
                         const StatusChip(
                           label: 'PRO',
                           type: StatusChipType.success,
@@ -58,7 +58,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    user?.email ?? 'owner@warungberkah.com',
+                    user?.email ?? '-',
                     style: textTheme.bodySmall?.copyWith(color: context.appColors.textSecondary),
                   ),
                   const Divider(height: 32),
@@ -69,12 +69,12 @@ class ProfileScreen extends StatelessWidget {
                       _buildProfileStat(
                         context,
                         label: 'Transaksi Bulan Ini',
-                        value: user?.totalTransactions.toString() ?? '1,247',
+                        value: user?.totalTransactions.toString() ?? '0',
                       ),
                       _buildProfileStat(
                         context,
                         label: 'Pelanggan Aktif',
-                        value: user?.activeCustomers.toString() ?? '8',
+                        value: user?.activeCustomers.toString() ?? '0',
                       ),
                     ],
                   ),

@@ -18,8 +18,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController(text: 'owner@warungku.com');
-  final _passwordController = TextEditingController(text: 'password123');
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   bool _obscurePassword = true;
 
   @override
@@ -48,6 +48,29 @@ class _LoginScreenState extends State<LoginScreen> {
           authProvider.errorMessage ?? 'Gagal masuk. Silakan periksa kembali akun Anda.',
         );
       }
+    }
+  }
+
+  Future<void> _handlePasswordReset() async {
+    final email = _emailController.text.trim();
+    final emailError = Validators.email(email);
+    if (emailError != null) {
+      SnackbarHelper.showInfo(context, 'Isi email yang valid dulu untuk reset password.');
+      return;
+    }
+
+    final authProvider = context.read<AuthProvider>();
+    final success = await authProvider.sendPasswordReset(email);
+
+    if (!mounted) return;
+
+    if (success) {
+      SnackbarHelper.showSuccess(context, 'Link reset password sudah dikirim ke email.');
+    } else {
+      SnackbarHelper.showError(
+        context,
+        authProvider.errorMessage ?? 'Gagal mengirim reset password.',
+      );
     }
   }
 
@@ -172,12 +195,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: AppButton.text(
                             label: 'Lupa Password?',
                             isFullWidth: false,
-                            onPressed: () {
-                              SnackbarHelper.showInfo(
-                                context,
-                                'Fitur lupa password sedang dalam pengembangan.',
-                              );
-                            },
+                            onPressed: _handlePasswordReset,
                           ),
                         ),
                         const SizedBox(height: 10),
@@ -201,12 +219,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       AppButton.text(
                         label: 'Daftar Toko',
                         isFullWidth: false,
-                        onPressed: () {
-                          SnackbarHelper.showInfo(
-                            context,
-                            'Hubungi Sales/Support untuk registrasi kemitraan.',
-                          );
-                        },
+                        onPressed: () => Navigator.pushNamed(
+                          context,
+                          AppRoutes.registerStore,
+                        ),
                       ),
                     ],
                   ),

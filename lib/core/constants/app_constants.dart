@@ -51,8 +51,8 @@ class AppConstants {
   static const String appTagline = 'Kelola warung lebih mudah';
 
   // ─── Supabase (Placeholder) ───
-  static const String supabaseUrl = 'https://your-project.supabase.co';
-  static const String supabaseAnonKey = 'your-anon-key';
+  static const String supabaseUrl = 'https://itfshrureocgkhathlvp.supabase.co';
+  static const String supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml0ZnNocnVyZW9jZ2toYXRobHZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0ODAxMzgsImV4cCI6MjA5NjA1NjEzOH0.vPLbgSJSUMPxVu7CWUW0zPvn5ijBH5XZaDq2ZNSSJ9E';
 
   // ─── Categories ───
   static const List<String> productCategories = [
